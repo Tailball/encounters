@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Tailball/encounters/issues"
   },
-  "homepage": "https://github.com/Tailball/encounters#readme"
+  "homepage": "https://github.com/Tailball/encounters#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
