@@ -1,4 +1,15 @@
+require('dotenv').config();
+
+
+//LIBRARIES
 const express = require('express');
+
+const model = require('./database/models/Users/User.model');
+const encounter = require('./database/models/Encounters/Encounter.model');
+const mongoose = require('mongoose');
+
+
+//SERVER START
 const server = express();
 
 
@@ -13,6 +24,22 @@ server.use('/api/encounters', require('./routes/encounters.routes'));
 
 //STATIC SERVING
 server.use('/', express.static('./client/dist'));
+
+
+//DATABASE SET UP
+const connection = process.env.DB
+                    .replace('<user>', process.env.DBUSER)
+                    .replace('<password>', process.env.DBPASSWORD);
+
+const connectionOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
+
+mongoose.connect(connection, connectionOptions, err => {
+        if(err) console.log('Error connecting DB', err);
+        else console.log('Connected to database');
+});
 
 
 //HOSTING
