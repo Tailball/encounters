@@ -1,0 +1,19 @@
+{
+  "name": "encounters",
+  "version": "1.0.0",
+  "description": "Encounter manager for 5th edition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tailball/encounters.git"
+  },
+  "author": "Jochen 'Tailball' Panjaer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tailball/encounters/issues"
+  },
+  "homepage": "https://github.com/Tailball/encounters#readme"
+}
