@@ -8,6 +8,8 @@ require('./database/models/Users/User.model');
 require('./database/models/Encounters/Encounter.model');
 const mongoose = require('mongoose');
 
+const authenticate = require('./middleware/authenticate.middleware');
+
 
 //SERVER START
 const server = express();
@@ -19,8 +21,9 @@ server.use(express.json());
 
 
 //ROUTING
-server.use('/api/users', require('./routes/users.routes'));
-server.use('/api/encounters', require('./routes/encounters.routes'));
+server.use('/api/users', authenticate, require('./routes/users.routes'));
+server.use('/api/encounters', authenticate, require('./routes/encounters.routes'));
+server.use('/api/auth', require('./routes/auth.routes'));
 
 //STATIC SERVING
 server.use('/', express.static('./client/dist'));

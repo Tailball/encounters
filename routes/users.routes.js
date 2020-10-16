@@ -10,7 +10,7 @@ const UserModel = mongoose.model('user');
  * Route:   /api/users
  */
 router.get('/', async (req, res) => {
-    const users = await UserModel.find({}); //TODO clear this
+    const users = await UserModel.findById(req.user._id);
     res.json(users);
 });
 

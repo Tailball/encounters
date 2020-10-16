@@ -10,7 +10,7 @@ const EncounterModel = mongoose.model('encounter');
  * Route:   /api/encounters 
  */
 router.get('/', async (req, res) => {
-    const encounters = await EncounterModel.find({}); //TODO: clear this
+    const encounters = await EncounterModel.find({ userId: mongoose.Types.ObjectId(req.user._id) });
     res.json(encounters);
 });
 
