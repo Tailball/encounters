@@ -1,0 +1,1 @@
+{"version":3,"sources":["css/_components.scss"],"names":[],"mappings":"AAAA,KACI","file":"css.bdc7f224.css","sourceRoot":"..","sourcesContent":["body {\n    background-color: $color-main;\n}"]}

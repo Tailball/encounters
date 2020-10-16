@@ -4,12 +4,14 @@
   "description": "Encounters client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Jochen 'Tailball' Panjaer",
   "license": "ISC",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.27.0"
   },
   "dependencies": {
     "axios": "^0.20.0",

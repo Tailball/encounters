@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/index.js"],"names":["onLoaded","console","log","window","addEventListener"],"mappings":";AAEA,SAASA,IACLC,QAAQC,IAAI,wBAHhBC,OAAOC,iBAAiB,OAAQJ","file":"js.c31d6f1d.js","sourceRoot":"..","sourcesContent":["window.addEventListener('load', onLoaded);\n\nfunction onLoaded() {\n    console.log('javascript is loaded');\n}"]}
