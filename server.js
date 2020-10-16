@@ -4,8 +4,8 @@ require('dotenv').config();
 //LIBRARIES
 const express = require('express');
 
-const model = require('./database/models/Users/User.model');
-const encounter = require('./database/models/Encounters/Encounter.model');
+require('./database/models/Users/User.model');
+require('./database/models/Encounters/Encounter.model');
 const mongoose = require('mongoose');
 
 
