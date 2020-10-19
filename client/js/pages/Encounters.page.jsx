@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AuthenticateComponent from '../components/component/authenticateComponent.component';
 
 import { AddEncounter } from '../redux/encounters/encounters.actions';
-import store from '../redux/store';
 
 
 class Encounters extends AuthenticateComponent {
@@ -13,16 +12,7 @@ class Encounters extends AuthenticateComponent {
     }
 
     componentDidMount() {
-        console.log('before state change', store.getState());
-
-        setTimeout(() => {
-            console.log('dispatching to store');
-            store.dispatch(AddEncounter('Reduxnewencounter'));    
-        }, 3000);
-
-        setTimeout(() => {
-            console.log('after state change', store.getState());
-        }, 5000);
+        //
     }
 
     componentWillUnmount() {
@@ -39,7 +29,7 @@ class Encounters extends AuthenticateComponent {
             <React.Fragment>
                 {super.render()}
 
-                <h1 onClick={this.onClickTitle}>these are the encounters</h1>
+                <h1 onClick={this.props.onClickTitle}>these are the encounters</h1>
                 {this.renderEncounters()}
             </React.Fragment>
         );
@@ -47,13 +37,8 @@ class Encounters extends AuthenticateComponent {
 
     renderEncounters = () => {
         return this.props.encounters.map(encounter => {
-            console.log(encounter.name);
             return <h2 key={encounter.name}>{encounter.name}</h2>;
         });
-    }
-
-    onClickTitle = () => {
-        store.dispatch(AddEncounter('ByClick'));
     }
 };
 
@@ -62,5 +47,9 @@ const mapStateToProps = (state) => ({
     encounters: state.encounters
 });
 
+const mapDispatchToProps = (dispatch) => ({
+    onClickTitle: () => dispatch(AddEncounter('from DispatchToProps'))
+});
 
-export default connect(mapStateToProps)(Encounters);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Encounters);
