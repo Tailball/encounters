@@ -1,7 +1,9 @@
 import React from 'react';
 
+import AuthenticateComponent from '../components/component/authenticateComponent.component';
 
-class Encounter extends React.Component {
+
+class Encounter extends AuthenticateComponent {
     constructor(props) {
         super(props);
 
@@ -11,11 +13,16 @@ class Encounter extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this);
+        console.log('encounter');
     }
 
     render() {
-        return <h1>Encounter {this.state.encounterId}!</h1>;
+        return (
+            <React.Fragment>
+                {super.render()}
+                <h1>Encounter {this.state.encounterId}!</h1>
+            </React.Fragment>
+        );
     }
 }
 

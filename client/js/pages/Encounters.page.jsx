@@ -1,7 +1,9 @@
 import React from 'react';
 
+import AuthenticateComponent from '../components/component/authenticateComponent.component';
 
-class Encounters extends React.Component {
+
+class Encounters extends AuthenticateComponent {
     constructor() {
         super();
 
@@ -29,11 +31,13 @@ class Encounters extends React.Component {
     }
 
     render() {
-        return (
-            <div>
+       return (
+            <React.Fragment>
+                {super.render()}
+
                 <h1>these are the encounters</h1>
                 {this.renderEncounters()}
-            </div>
+            </React.Fragment>
         );
     }
 
