@@ -1,1 +1,0 @@
-{"version":3,"sources":["css/_components.scss","css/_variables.scss"],"names":[],"mappings":"AAAA;EACI,kBCDS","file":"css.81192ade.css","sourceRoot":"..","sourcesContent":["body {\n    background-color: $color-main;\n}","$color-main: lightgreen;"]}

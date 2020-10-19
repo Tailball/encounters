@@ -1,33 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import AuthenticateComponent from '../components/component/authenticateComponent.component';
+
+import { AddEncounter } from '../redux/encounters/encounters.actions';
+import store from '../redux/store';
 
 
 class Encounters extends AuthenticateComponent {
     constructor() {
         super();
-
-        this.state = {
-            encounters: []
-        };
-
-        this.timeout = null;
     }
 
     componentDidMount() {
-        this.timeout = setTimeout(() => {
-            this.setState({
-                encounters: [
-                    { name: 'poop' },
-                    { name: 'poop2' },
-                    { name: 'pooppydiepie' },
-                ]
-            }, () => console.log('state updated'));
+        console.log('before state change', store.getState());
+
+        setTimeout(() => {
+            console.log('dispatching to store');
+            store.dispatch(AddEncounter('Reduxnewencounter'));    
         }, 3000);
+
+        setTimeout(() => {
+            console.log('after state change', store.getState());
+        }, 5000);
     }
 
     componentWillUnmount() {
         clearTimeout(this.timeout);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.props.encounters.length !== nextProps.encounters.length) return true;
+        return false;
     }
 
     render() {
@@ -35,19 +39,28 @@ class Encounters extends AuthenticateComponent {
             <React.Fragment>
                 {super.render()}
 
-                <h1>these are the encounters</h1>
+                <h1 onClick={this.onClickTitle}>these are the encounters</h1>
                 {this.renderEncounters()}
             </React.Fragment>
         );
     }
 
     renderEncounters = () => {
-        console.log(this.state.encounters);
-        return this.state.encounters.map(encounter => {
+        return this.props.encounters.map(encounter => {
             console.log(encounter.name);
             return <h2 key={encounter.name}>{encounter.name}</h2>;
         });
     }
+
+    onClickTitle = () => {
+        store.dispatch(AddEncounter('ByClick'));
+    }
 };
 
-export default Encounters;
+
+const mapStateToProps = (state) => ({
+    encounters: state.encounters
+});
+
+
+export default connect(mapStateToProps)(Encounters);
