@@ -25,8 +25,9 @@ server.use('/api/users', authenticate, require('./routes/users.routes'));
 server.use('/api/encounters', authenticate, require('./routes/encounters.routes'));
 server.use('/api/auth', require('./routes/auth.routes'));
 
-//STATIC SERVING
+//STATIC SERVING (+ react router sending index.html back on every unknown route)
 server.use('/', express.static('./client/dist'));
+server.get('*', (req, res) =>  res.sendFile('index.html', {root: './client/dist'}));
 
 
 //DATABASE SET UP
